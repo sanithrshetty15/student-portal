@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Student Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <header class="header">
+  <div class="header-left">
+    <img src="assets/logo.jpg" class="logo-img" alt="AIET Logo">
+    <span class="college-name">
+      Alva's Institute of Engineering and Technology
+    </span>
+  </div>
+
+  <nav class="nav">
+    <a href="#" onclick="openAbout()">About</a>
+    <a href="#" onclick="openContact()">Contact</a>
+  </nav>
+</header>
+
+
+  <h2>Student Login</h2>
+
+  <div class="login-box">
+    <input type="text" id="id" placeholder="Student ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="message"></p>
+  </div>
+
+  <script src="login.js">
+function openAbout() {
+  document.getElementById("aboutModal").style.display = "flex";
+}
+function closeAbout() {
+  document.getElementById("aboutModal").style.display = "none";
+}
+function openContact() {
+  document.getElementById("contactModal").style.display = "flex";
+}
+function closeContact() {
+  document.getElementById("contactModal").style.display = "none";
+}
+  </script>
+
+</body>
+</html>

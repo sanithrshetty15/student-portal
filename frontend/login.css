@@ -1,0 +1,231 @@
+body {
+font-family: Arial;
+background: #f2f2f2;
+text-align: center;
+margin-top: 100px;
+}
+
+.login-box {
+background: white;
+width: 300px;
+margin: auto;
+padding: 20px;
+border-radius: 5px;
+}
+
+input {
+width: 90%;
+padding: 10px;
+margin: 10px 0;
+}
+
+button {
+padding: 10px 20px;
+cursor: pointer;
+}
+
+#message {
+color: red;
+}
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #cce7ff; /* light blue background */
+  color: #003366; /* dark blue text for contrast */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav a {
+  color: #003366;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #003366;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a:hover {
+  color: #0059b3;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .nav {
+    margin-top: 10px;
+  }
+
+  .nav a {
+    display: block;
+    margin: 10px 0;
+  }
+}
+/* Input Fields */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 2px solid #cce7ff; /* light blue border */
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+  border-color: #3399ff; /* darker blue on hover */
+  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #0059b3; /* strong blue on focus */
+  box-shadow: 0 4px 12px rgba(0, 89, 179, 0.3);
+}
+
+/* Login Button */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #3399ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0059b3; /* dark blue on hover */
+  transform: scale(1.05);    /* slight grow effect */
+  box-shadow: 0 4px 15px rgba(0, 89, 179, 0.3);
+}
+
+button:active {
+  transform: scale(0.98); /* small shrink effect when clicked */
+}
+/* HEADER */
+.header {
+background: linear-gradient(135deg, #0d47a1, #1976d2);
+padding: 15px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: white;
+}
+
+.header-left {
+display: flex;
+align-items: center;
+}
+
+.logo-img {
+width: 45px;
+height: 45px;
+margin-right: 12px;
+}
+
+.college-name {
+font-size: 18px;
+font-weight: bold;
+}
+
+.nav a {
+color: white;
+margin-left: 20px;
+text-decoration: none;
+font-weight: 500;
+position: relative;
+}
+
+.nav a::after {
+content: "";
+width: 0%;
+height: 2px;
+background: white;
+position: absolute;
+bottom: -4px;
+left: 0;
+transition: 0.3s;
+}
+
+.nav a:hover::after {
+width: 100%;
+}
+
+/* MODAL BACKGROUND */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.6);
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+/* MODAL BOX */
+.modal-content {
+background: white;
+padding: 25px;
+border-radius: 12px;
+width: 400px;
+text-align: center;
+animation: pop 0.4s ease;
+}
+
+.close {
+float: right;
+cursor: pointer;
+font-size: 22px;
+}
+
+/* ANIMATION */
+@keyframes pop {
+from {
+transform: scale(0.7);
+opacity: 0;
+}
+to {
+transform: scale(1);
+opacity: 1;
+}
+}

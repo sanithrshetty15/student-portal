@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+
+<header class="header">
+  <div class="header-left">
+    <img src="assets/logo.jpg" class="logo-img" alt="AIET Logo">
+    <span class="college-name">
+      Alva's Institute of Engineering and Technology
+    </span>
+  </div>
+
+  <nav class="nav">
+    <a href="#" onclick="openAbout()">About</a>
+    <a href="#" onclick="openContact()">Contact</a>
+  </nav>
+</header>
+
+
+<h2 class="title">Student Dashboard</h2>
+
+<div class="dashboard-container">
+
+  <div class="card">
+    <h3>Name</h3>
+    <p id="name"></p>
+  </div>
+
+  <div class="card">
+    <h3>Student ID</h3>
+    <p id="id"></p>
+  </div>
+
+  <div class="card">
+    <h3>Department</h3>
+    <p id="department"></p>
+  </div>
+
+  <div class="card">
+    <h3>Marks</h3>
+    <p id="marks"></p>
+  </div>
+
+  <div class="card">
+    <h3>Attendance</h3>
+    <p id="attendance"></p>
+  </div>
+
+  <div class="card highlight">
+    <h3>Performance</h3>
+    <p id="performance"></p>
+  </div>
+
+  <div class="card">
+    <h3>Next Exam</h3>
+    <p id="exam-date">20-02-2026</p>
+  </div>
+
+  <div class="card">
+    <h3>Nearest Event</h3>
+    <p id="event">Tech Fest</p>
+  </div>
+
+</div>
+
+<script>
+  const student = JSON.parse(localStorage.getItem("student"));
+
+  if (!student) {
+    window.location.href = "login.html";
+  }
+
+  document.getElementById("name").innerText = student.name;
+  document.getElementById("id").innerText = student.id;
+  document.getElementById("department").innerText = student.department || "CSE";
+  document.getElementById("marks").innerText = student.marks;
+  document.getElementById("attendance").innerText = student.attendance + "%";
+
+  // Performance logic
+  let performance = "Average";
+  if (student.marks >= 80) performance = "Excellent";
+  else if (student.marks >= 60) performance = "Good";
+
+  document.getElementById("performance").innerText = performance;
+
+  function logout() {
+    localStorage.removeItem("student");
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
