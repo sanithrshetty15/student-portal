@@ -74,7 +74,7 @@
   const student = JSON.parse(localStorage.getItem("student"));
 
   if (!student) {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 
   document.getElementById("name").innerText = student.name;
@@ -92,7 +92,7 @@
 
   function logout() {
     localStorage.removeItem("student");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 </script>
 
