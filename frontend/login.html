@@ -15,7 +15,8 @@
   </div>
 
   <nav class="nav">
-    <a href="#" onclick="openAbout()">About</a>
+    <span class="nav-link" onclick="openAbout()">About</span>
+
     <a href="#" onclick="openContact()">Contact</a>
   </nav>
 </header>
@@ -31,6 +32,10 @@
   </div>
 
   <script src="login.js">
+    
+alert("JS is working");
+
+
 function openAbout() {
   document.getElementById("aboutModal").style.display = "flex";
 }
@@ -44,6 +49,51 @@ function closeContact() {
   document.getElementById("contactModal").style.display = "none";
 }
   </script>
+<div id="aboutModal" style="
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:99999;
+  align-items:center;
+  justify-content:center;
+">
+
+  <div style="
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    width:500px;
+  ">
+    <span style="float:right; cursor:pointer; font-size:22px;"
+          onclick="closeAbout()">×</span>
+
+    <h2>About AIET</h2>
+
+    <div style="display:flex; gap:15px; margin-top:15px;">
+      <img src="assets/principal.jpg"
+           style="width:120px; border-radius:8px;">
+
+      <p>
+        Alva’s Institute of Engineering and Technology (AIET), Moodbidri,
+        provides quality engineering education focusing on innovation,
+        discipline, and student development.
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+function openAbout() {
+  document.getElementById("aboutModal").style.display = "flex";
+}
+
+function closeAbout() {
+  document.getElementById("aboutModal").style.display = "none";
+}
+</script>
+
 
 </body>
 </html>

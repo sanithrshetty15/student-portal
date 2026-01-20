@@ -27,3 +27,10 @@ async function login() {
     message.innerText = "Server not running";
   }
 }
+function openAbout() {
+  document.getElementById("aboutModal").style.display = "flex";
+}
+
+function closeAbout() {
+  document.getElementById("aboutModal").style.display = "none";
+}
