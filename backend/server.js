@@ -1,5 +1,5 @@
 // server.js
-
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,9 +9,10 @@ app.use(cors());
 app.use(express.json()); // parse JSON body
 
 // ----------------- MongoDB connection -----------------
-mongoose.connect("mongodb://127.0.0.1:27017/studentPortal")
-  .then(() => console.log("MongoDB connected ✅"))
-  .catch(err => console.error("MongoDB connection failed ❌", err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB connection error:", err));
+
 
 
 // ----------------- Student Schema -----------------
@@ -109,7 +110,6 @@ app.post("/api/students/login", async (req, res) => {
 
 
 // ----------------- Start server -----------------
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
