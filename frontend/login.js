@@ -4,7 +4,8 @@ async function login() {
   const message = document.getElementById("message");
 
   try {
-    const res = await fetch("http://localhost:3000/api/students/login", {
+    const res = await fetch("https://student-portal-production-1981.up.railway.app/api/students/login", {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, password })
