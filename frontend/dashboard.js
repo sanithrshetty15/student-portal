@@ -4,7 +4,7 @@
 const student = JSON.parse(localStorage.getItem("student"));
 
 if (!student) {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 } else {
   document.getElementById("name").innerText = student.name || "-";
   document.getElementById("id").innerText = student.id || "-";
@@ -37,7 +37,7 @@ if (!student) {
   document.getElementById("performance").innerText = performance;
 
   // Static academic info
-  document.getElementById("exam-date").innerText = "05-02-2026";
+  document.getElementById("exam-date").innerText = "02-02-2026";
   document.getElementById("event").innerText = "Tech Fest 2026";
 }
 
@@ -46,7 +46,7 @@ if (!student) {
 // ===============================
 function logout() {
   localStorage.removeItem("student");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 // ===============================
