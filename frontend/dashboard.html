@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +7,7 @@
 </head>
 <body>
 
-
+<!-- HEADER -->
 <header class="header">
   <div class="header-left">
     <img src="assets/logo.jpg" class="logo-img" alt="AIET Logo">
@@ -18,15 +17,15 @@
   </div>
 
   <nav class="nav">
-    <a href="#" onclick="openAbout()">About</a>
-    <a href="#" onclick="openContact()">Contact</a>
-    <a href="#" onclick="logout()">Logout</a>
+    <span class="nav-link" onclick="openAbout()">About</span>
+    <span class="nav-link" onclick="openContact()">Contact</span>
+    <span class="nav-link logout" onclick="logout()">Logout</span>
   </nav>
 </header>
 
-
 <h2 class="title">Student Dashboard</h2>
 
+<!-- DASHBOARD -->
 <div class="dashboard-container">
 
   <div class="card">
@@ -45,9 +44,14 @@
   </div>
 
   <div class="card">
-    <h3>Marks</h3>
-    <p id="marks"></p>
-  </div>
+  <h3>Marks</h3>
+  <p id="marks"></p>
+
+  <a href="#" class="details-link" onclick="openMarksModal()">
+    See detailed marks →
+  </a>
+</div>
+
 
   <div class="card">
     <h3>Attendance</h3>
@@ -70,67 +74,6 @@
   </div>
 
 </div>
-<div id="aboutModal" style="
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.6);
-  z-index:99999;
-  align-items:center;
-  justify-content:center;
-">
-
-  <div style="
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    width:500px;
-  ">
-    <span style="float:right; cursor:pointer; font-size:22px;"
-          onclick="closeAbout()">×</span>
-
-    <h2>About AIET</h2>
-
-    <div style="display:flex; gap:15px; margin-top:15px;">
-      <img src="assets/principal.jpg"
-           style="width:120px; border-radius:8px;">
-
-      <p>
-        Alva’s Institute of Engineering and Technology (AIET), Moodbidri,
-        provides quality engineering education focusing on innovation,
-        discipline, and student development.
-      </p>
-    </div>
-  </div>
-</div>
-
-<script>
-  const student = JSON.parse(localStorage.getItem("student"));
-
-  if (!student) {
-    window.location.href = "login.html";
-  }
-
-  document.getElementById("name").innerText = student.name;
-  document.getElementById("id").innerText = student.id;
-  document.getElementById("department").innerText = student.department || "CSE";
-  document.getElementById("marks").innerText = student.marks;
-  document.getElementById("attendance").innerText = student.attendance + "%";
-
-  // Performance logic
-  let performance = "Average";
-  if (student.marks >= 80) performance = "Excellent";
-  else if (student.marks >= 60) performance = "Good";
-
-  document.getElementById("performance").innerText = performance;
-
-  function logout() {
-    localStorage.removeItem("student");
-    window.location.href = "login.html";
-  }
-</script>
 <!-- ABOUT MODAL -->
 <div class="modal" id="aboutModal">
   <div class="modal-content about-box">
@@ -145,12 +88,11 @@
         Alva’s Institute of Engineering and Technology (AIET), Moodbidri,
         is a premier engineering institution committed to academic excellence,
         innovation, and holistic student development.
-        The institute offers quality education with modern infrastructure
-        and experienced faculty.
       </p>
     </div>
   </div>
 </div>
+
 <!-- CONTACT MODAL -->
 <div class="modal" id="contactModal">
   <div class="modal-content contact-box">
@@ -174,6 +116,62 @@
     <p><strong>Email:</strong> principalaiet08@gmail.com</p>
   </div>
 </div>
+
+<!-- DETAILED MARKS MODAL -->
+<div class="modal" id="marksModal">
+  <div class="modal-content marks-box">
+    <span class="close" onclick="closeMarksModal()">&times;</span>
+
+    <h2>Detailed Marks</h2>
+
+    <table class="marks-table">
+      <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+      </tr>
+      <tr>
+        <td>Mathematics</td>
+        <td id="m-maths">-</td>
+      </tr>
+      <tr>
+        <td>Chemistry</td>
+        <td id="m-chemistry">-</td>
+      </tr>
+      <tr>
+        <td>Electronics & Communication</td>
+        <td id="m-ec">-</td>
+      </tr>
+      <tr>
+        <td>Python Programming</td>
+        <td id="m-python">-</td>
+      </tr>
+      <tr>
+        <td>Introduction to AI</td>
+        <td id="m-ai">-</td>
+      </tr>
+      <tr>
+        <td>Communication Skills (English)</td>
+        <td id="m-english">-</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>
+      © 2026 Alva’s Institute of Engineering and Technology, Moodbidri
+    </p>
+    <p class="footer-sub">
+      Designed & Developed for Student Portal
+    </p>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="dashboard.js"></script>
 
 </body>
 </html>
