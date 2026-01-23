@@ -31,3 +31,18 @@ function logout() {
   localStorage.removeItem("student");
   window.location.href = "login.html";
 }
+function openAbout() {
+  document.getElementById("aboutModal").style.display = "flex";
+}
+
+function closeAbout() {
+  document.getElementById("aboutModal").style.display = "none";
+}
+
+function openContact() {
+  document.getElementById("contactModal").style.display = "flex";
+}
+
+function closeContact() {
+  document.getElementById("contactModal").style.display = "none";
+}

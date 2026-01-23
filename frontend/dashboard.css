@@ -205,3 +205,80 @@ transform: scale(1);
 opacity: 1;
 }
 }
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.nav-link {
+  color: white;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.show-pass {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.show-pass input {
+  margin-right: 6px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 520px;
+  position: relative;
+  animation: scaleIn 0.3s ease;
+}
+
+.contact-box p {
+  margin: 8px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.modal h2 {
+  margin-bottom: 15px;
+  color: #0b5ed7;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

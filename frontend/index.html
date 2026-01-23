@@ -32,24 +32,7 @@
     <p id="message"></p>
   </div>
 
-  <script src="login.js">
-    
-alert("JS is working");
-
-
-function openAbout() {
-  document.getElementById("aboutModal").style.display = "flex";
-}
-function closeAbout() {
-  document.getElementById("aboutModal").style.display = "none";
-}
-function openContact() {
-  document.getElementById("contactModal").style.display = "flex";
-}
-function closeContact() {
-  document.getElementById("contactModal").style.display = "none";
-}
-  </script>
+  
 <div id="aboutModal" style="
   display:none;
   position:fixed;
@@ -85,21 +68,31 @@ function closeContact() {
     </div>
   </div>
 </div>
-<script>
-function openAbout() {
-  document.getElementById("aboutModal").style.display = "flex";
-}
+<!-- CONTACT MODAL -->
+<div class="modal" id="contactModal">
+  <div class="modal-content contact-box">
+    <span class="close" onclick="closeContact()">&times;</span>
 
-function closeAbout() {
-  document.getElementById("aboutModal").style.display = "none";
-}
+    <h2>Contact Us</h2>
 
-function togglePassword() {
-  const passField = document.getElementById("password");
-  passField.type = passField.type === "password" ? "text" : "password";
-}
-</script>
+    <p><strong>ALVA’S INSTITUTE OF ENGINEERING & TECHNOLOGY</strong></p>
 
+    <p>
+      Shobhavana Campus, Mijar,<br>
+      Moodubidire – 574 225,<br>
+      Mangalore, DK,<br>
+      Karnataka State – INDIA
+    </p>
+
+    <p><strong>College Phone:</strong> 08258-262724 / 25</p>
+    <p><strong>Admission Cell:</strong> +91 8050585606</p>
+    <p><strong>Administrative Officer (AO):</strong> +91 9448458334</p>
+    <p><strong>Principal:</strong> +91 9845050268</p>
+    <p><strong>Email:</strong> principalaiet08@gmail.com</p>
+  </div>
+</div>
+
+<script src="login.js"></script>
 
 </body>
 </html>
