@@ -6,11 +6,9 @@ const student = JSON.parse(localStorage.getItem("student"));
 if (!student) {
   window.location.href = "login.html";
 } else {
-  // Basic info
   document.getElementById("name").innerText = student.name || "-";
   document.getElementById("id").innerText = student.id || "-";
-  document.getElementById("department").innerText =
-    student.department || "CSE";
+  document.getElementById("department").innerText = student.department || "CSE";
 
   document.getElementById("marks").innerText =
     student.marks !== undefined ? student.marks : "-";
@@ -29,7 +27,7 @@ if (!student) {
     document.getElementById("attendance").innerText = "-";
   }
 
-  // Performance logic (based on marks)
+  // Performance
   let performance = "Average";
   if (student.marks >= 90) performance = "Excellent";
   else if (student.marks >= 75) performance = "Good";
@@ -57,7 +55,6 @@ function logout() {
 function openAbout() {
   document.getElementById("aboutModal").style.display = "flex";
 }
-
 function closeAbout() {
   document.getElementById("aboutModal").style.display = "none";
 }
@@ -68,22 +65,24 @@ function closeAbout() {
 function openContact() {
   document.getElementById("contactModal").style.display = "flex";
 }
-
 function closeContact() {
   document.getElementById("contactModal").style.display = "none";
 }
 
-
+// ===============================
+// MARKS MODAL
+// ===============================
 function openMarksModal() {
   document.getElementById("marksModal").style.display = "flex";
   loadDetailedMarks();
 }
-
 function closeMarksModal() {
   document.getElementById("marksModal").style.display = "none";
 }
 
-
+// ===============================
+// LOAD DETAILED MARKS FROM CSV
+// ===============================
 async function loadDetailedMarks() {
   try {
     const response = await fetch("assets/marks.csv");
@@ -102,18 +101,43 @@ async function loadDetailedMarks() {
     }
 
     const values = studentRow.split(",");
-
     const data = {};
+
     headers.forEach((h, i) => {
-      data[h] = values[i];
+      data[h.trim()] = parseInt(values[i], 10);
     });
 
+    // Fill subject marks
     document.getElementById("m-maths").innerText = data.maths;
     document.getElementById("m-chemistry").innerText = data.chemistry;
     document.getElementById("m-ec").innerText = data.ec;
     document.getElementById("m-python").innerText = data.python;
     document.getElementById("m-ai").innerText = data.ai;
     document.getElementById("m-english").innerText = data.english;
+
+    // ===============================
+    // TOTAL, PERCENTAGE, GRADE
+    // ===============================
+    const total =
+      data.maths +
+      data.chemistry +
+      data.ec +
+      data.python +
+      data.ai +
+      data.english;
+
+    const percentage = Math.round((total / 600) * 100);
+
+    let grade = "F";
+    if (percentage >= 90) grade = "A+";
+    else if (percentage >= 80) grade = "A";
+    else if (percentage >= 70) grade = "B";
+    else if (percentage >= 60) grade = "C";
+    else if (percentage >= 50) grade = "D";
+
+    document.getElementById("totalMarks").innerText = total + " / 600";
+    document.getElementById("percentage").innerText = percentage;
+    document.getElementById("grade").innerText = grade;
 
   } catch (err) {
     alert("Unable to load marks file");
