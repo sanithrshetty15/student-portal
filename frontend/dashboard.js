@@ -35,6 +35,7 @@ if (student.attendance !== undefined) {
   document.getElementById("exam-date").innerText = "02-02-2026";
   document.getElementById("event").innerText = "Tech Fest 2026";
 }
+loadDetailedMarks();
 
 // ===============================
 // LOGOUT
@@ -135,7 +136,110 @@ async function loadDetailedMarks() {
     document.getElementById("grade").innerText = grade;
 
   } catch (err) {
-    alert("Unable to load marks file");
+   
     console.error(err);
   }
 }
+
+
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // ===============================
+  // LOGO
+  // ===============================
+  const logo = new Image();
+  logo.src = "assets/logo.jpg";
+
+  logo.onload = () => {
+    // Logo
+    doc.addImage(logo, "JPEG", 15, 10, 25, 25);
+
+    // College name
+    doc.setFontSize(16);
+    doc.text(
+      "Alva’s Institute of Engineering and Technology",
+      50,
+      20
+    );
+
+    doc.setFontSize(11);
+    doc.text("Student Academic Report", 50, 28);
+
+    // Line
+    doc.line(15, 38, 195, 38);
+
+    // ===============================
+    // STUDENT INFO
+    // ===============================
+    let y = 48;
+    doc.setFontSize(12);
+
+    doc.text(`Name: ${student.name}`, 15, y);
+    y += 8;
+    doc.text(`Student ID: ${student.id}`, 15, y);
+    y += 8;
+    doc.text(`Department: ${student.department}`, 15, y);
+    y += 8;
+    doc.text(`Attendance: ${attendancePercent()}%`, 15, y);
+    y += 10;
+
+    // ===============================
+    // SUBJECT MARKS TABLE
+    // ===============================
+    doc.setFontSize(13);
+    doc.text("Subject-wise Marks", 15, y);
+    y += 8;
+
+    doc.setFontSize(11);
+
+    const subjects = [
+      ["Mathematics", document.getElementById("m-maths").innerText],
+      ["Chemistry", document.getElementById("m-chemistry").innerText],
+      ["Electronics & Communication", document.getElementById("m-ec").innerText],
+      ["Python Programming", document.getElementById("m-python").innerText],
+      ["Introduction to AI", document.getElementById("m-ai").innerText],
+      ["Communication Skills", document.getElementById("m-english").innerText]
+    ];
+
+    subjects.forEach(sub => {
+      doc.text(`${sub[0]} : ${sub[1]}`, 20, y);
+      y += 7;
+    });
+
+    y += 5;
+
+    // ===============================
+    // TOTAL + GRADE
+    // ===============================
+    doc.setFontSize(12);
+    doc.text(`Total Marks: ${student.marks}`, 15, y);
+    y += 8;
+
+    doc.text(`Performance: ${document.getElementById("performance").innerText}`, 15, y);
+
+    // ===============================
+    // FOOTER
+    // ===============================
+    doc.setFontSize(10);
+    doc.text(
+      "© 2026 Alva’s Institute of Engineering and Technology, Moodbidri",
+      15,
+      285
+    );
+
+    // SAVE
+    doc.save(`${student.id}_Report.pdf`);
+  };
+}
+
+// Attendance percentage helper
+function attendancePercent() {
+  if (student.attendance && student.totalClasses) {
+    return Math.round((student.attendance / student.totalClasses) * 100);
+  }
+  return 0;
+}
+
+

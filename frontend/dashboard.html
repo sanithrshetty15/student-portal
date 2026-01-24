@@ -43,13 +43,20 @@
     <p id="department"></p>
   </div>
 
-  <div class="card">
-    <h3>Marks</h3>
-    <p id="marks"></p>
-    <span class="details-link" onclick="openMarksModal()">
-      See detailed marks →
-    </span>
-  </div>
+ <div class="card">
+  <h3>Marks</h3>
+  <p id="marks"></p>
+
+  <a href="#" class="details-link" onclick="openMarksModal()">
+    See detailed marks →
+  </a>
+
+  <button class="pdf-btn" onclick="downloadPDF()">
+    Download Report (PDF)
+  </button>
+</div>
+
+
 
   <div class="card">
     <h3>Attendance</h3>
@@ -144,8 +151,15 @@
     <p class="footer-sub">Student Portal</p>
   </div>
 </footer>
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- jsPDF AutoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
 
 <!-- JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script src="dashboard.js"></script>
 
 </body>
