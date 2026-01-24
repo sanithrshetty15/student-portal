@@ -14,18 +14,13 @@ if (!student) {
     student.marks !== undefined ? student.marks : "-";
 
   // Attendance %
-  if (
-    student.attendance !== undefined &&
-    student.totalClasses !== undefined &&
-    student.totalClasses > 0
-  ) {
-    const percent = Math.round(
-      (student.attendance / student.totalClasses) * 100
-    );
-    document.getElementById("attendance").innerText = percent + "%";
-  } else {
-    document.getElementById("attendance").innerText = "-";
-  }
+ // Attendance (already stored as percentage)
+if (student.attendance !== undefined) {
+  document.getElementById("attendance").innerText =
+    student.attendance + "%";
+} else {
+  document.getElementById("attendance").innerText = "-";
+}
 
   // Performance
   let performance = "Average";
